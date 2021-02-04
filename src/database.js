@@ -68,6 +68,7 @@ module.exports = {
 
       connection.end();
       return arrayOfTables
+      
     //   fs.writeFile ("input.json", JSON.stringify(arrayOfTables), function(err) {
     //     if (err) throw err;
     //     console.log('complete');

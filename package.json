@@ -1,0 +1,25 @@
+{
+  "name": "minie",
+  "version": "0.0.1",
+  "description": "Web security and monitoration tools",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KoenomatachiSan/miniesecurity-js.git"
+  },
+  "keywords": [
+    "security"
+  ],
+  "author": "Gustavo de Oliveira Rosa <gustavoolrosa2019@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/KoenomatachiSan/miniesecurity-js/issues"
+  },
+  "homepage": "https://github.com/KoenomatachiSan/miniesecurity-js#readme",
+  "dependencies": {
+    "mysql": "^2.18.1"
+  }
+}

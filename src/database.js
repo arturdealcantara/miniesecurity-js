@@ -1,5 +1,5 @@
 let mysql = require("mysql");
-var fs = require('fs');
+// var fs = require('fs');
 
 module.exports = {
 
@@ -67,12 +67,12 @@ module.exports = {
       }
 
       connection.end();
-
-      fs.writeFile ("input.json", JSON.stringify(arrayOfTables), function(err) {
-        if (err) throw err;
-        console.log('complete');
-        }
-    );
+      return arrayOfTables
+    //   fs.writeFile ("input.json", JSON.stringify(arrayOfTables), function(err) {
+    //     if (err) throw err;
+    //     console.log('complete');
+    //     }
+    // );
 
    
   },

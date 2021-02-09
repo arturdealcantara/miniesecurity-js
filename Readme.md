@@ -16,6 +16,8 @@ Para acompanhar a library, usamos a seguinte lógica: Na branch master, estará 
 # Ferramentas presentes na versão atual:
 
   - Ferramenta para varrer banco de dados MySQL e gerar um json com toda a estrutura a respeito de tabelas e colunas.
+  - Ferramenta para visualizar usuários conectados no banco de dados e também suas respectivas ações naquele momento.
+  - Ferramenta de rastreamento de usuários conectados ao banco de dados, dando informações precisas como: Geolocalização e dados de conexão.
 
 > Lembrando que, o repositório está e sempre estará aberto a novas opiniões
 > e ponto de vista. Portanto, ao requisitar alguma atualização lembre-se

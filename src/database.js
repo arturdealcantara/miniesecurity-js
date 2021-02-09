@@ -1,4 +1,5 @@
 let mysql = require("mysql");
+const geoip = require('geoip-lite');
 // var fs = require('fs');
 
 module.exports = {
@@ -49,17 +50,15 @@ module.exports = {
           );
         });
 
-        console.log(findTables.name)
-
         for (const table of describeTables){
 
           arrayOfColumns.push({
-            Column : table.Field,
-            Type: table.Type,
-            Nullable: table.Null,
+            column : table.Field,
+            type: table.Type,
+            nullable: table.Null,
             Key:table.Key,
-            Default: table.Default,
-            Extra: table.Extra
+            default: table.Default,
+            extra: table.Extra
           })
           
         }
@@ -71,10 +70,49 @@ module.exports = {
       
     //   fs.writeFile ("input.json", JSON.stringify(arrayOfTables), function(err) {
     //     if (err) throw err;
-    //     console.log('complete');
     //     }
     // );
 
    
   },
+
+  async monitoringUser(user, password, host, database, db_x,db_y) {
+
+    var mysql = require("mysql");
+    var connection = mysql.createConnection({
+      host,
+      user,
+      password,
+      database,
+    });
+
+    connection.connect();
+
+    const findUserLogged = await new Promise((resolve, reject) => {
+        connection.query(
+          "SHOW FULL PROCESSLIST",
+          (err, result) => {
+            return err ? reject(err) : resolve(result);
+          }
+        );
+      });
+
+      const response = []
+      for (const user in findUserLogged){
+        const host_complete = findUserLogged[user]['Host']
+        const geoTracing = await geoip.lookup(host_complete.split(":")[0])
+        const inject = {
+          user : findUserLogged[user]['User'],
+          host: host_complete,
+          db: findUserLogged[user]['db'],
+          command:findUserLogged[user]['Command'],
+          state: findUserLogged[user]['State'],
+          info: findUserLogged[user]['Info'],
+          geoTracing
+        }
+        response.push(inject)
+      }
+      return response
+  },
+
 };

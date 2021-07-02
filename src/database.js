@@ -1,4 +1,4 @@
-let mysql = require("mysql");
+const mysql = require("mysql");
 const geoip = require('geoip-lite');
 // var fs = require('fs');
 
@@ -6,8 +6,8 @@ module.exports = {
 
   async introspect(user, password, host, database) {
 
-    var mysql = require("mysql");
-    var connection = mysql.createConnection({
+//     var mysql = require("mysql");
+    const connection = mysql.createConnection({
       host,
       user,
       password,
@@ -78,8 +78,8 @@ module.exports = {
 
   async monitoringUser(user, password, host, database, db_x,db_y) {
 
-    var mysql = require("mysql");
-    var connection = mysql.createConnection({
+//     var mysql = require("mysql");
+    const connection = mysql.createConnection({
       host,
       user,
       password,
